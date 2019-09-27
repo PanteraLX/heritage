@@ -1,8 +1,8 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { IPerson } from '../models/person';
-import { APIService } from '../api/api.service';
+import { IPerson } from '../../models/person';
+import { APIService } from '../../services/api/api.service';
 
 @Component({
   selector: 'heritage-family-list',

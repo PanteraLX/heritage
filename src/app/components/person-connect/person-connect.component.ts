@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { faPlus, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { Observable } from 'rxjs';
-import { IPerson } from '../common/models/person';
-import { APIService } from '../common/api/api.service';
+import { IPerson } from '../../models/person';
+import { APIService } from '../../services/api/api.service';
 
 @Component({
   selector: 'heritage-person-connect',

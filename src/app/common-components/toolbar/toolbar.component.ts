@@ -1,9 +1,9 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { IPerson } from '../models/person';
-import { LoginService } from '../../login/login.service';
-import { APIService } from '../api/api.service';
+import { IPerson } from '../../models/person';
+import { LoginService } from '../../components/login/login.service';
+import { APIService } from '../../services/api/api.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
