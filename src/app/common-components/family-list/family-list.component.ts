@@ -29,13 +29,13 @@ export class FamilyListComponent implements OnInit, OnChanges {
   }
 
   private loadFamily() {
-    const children$: Observable<IPerson[]> = this.apiService.fetch<IPerson[]>('children' + '/' + this.person._key);
+    const children$: Observable<IPerson[]> = this.apiService.fetch<IPerson[]>('family/children' + '/' + this.person._key);
     children$.subscribe((children: IPerson[]) => this.children = children);
 
-    const parents$: Observable<IPerson[]> = this.apiService.fetch<IPerson[]>('parents' + '/' + this.person._key);
+    const parents$: Observable<IPerson[]> = this.apiService.fetch<IPerson[]>('family/parents' + '/' + this.person._key);
     parents$.subscribe((parents: IPerson[]) => this.parents = parents);
 
-    const partners$: Observable<IPerson[]> = this.apiService.fetch<IPerson[]>('partners' + '/' + this.person._key);
+    const partners$: Observable<IPerson[]> = this.apiService.fetch<IPerson[]>('family/partners' + '/' + this.person._key);
     partners$.subscribe((partners: IPerson[]) => this.partners = partners);
   }
 
