@@ -4,7 +4,7 @@
       <h1 class="h3 mb-3 font-weight-normal">Login</h1>
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
-          <label for="inputEmail">Mail-Adresse</label>
+          <label for="inputEmail">Mailadresse</label>
           <input formControlName="username"
                  [ngClass]="{ 'is-invalid': submitted && f.username.errors }"
                  type="email"
@@ -30,7 +30,7 @@
             <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
             Login
           </button>
-          <a routerLink="/register" class="btn btn-link">Register</a>
+          <a routerLink="/register" class="btn btn-link">Registrieren</a>
         </div>
       </form>
     </div>
