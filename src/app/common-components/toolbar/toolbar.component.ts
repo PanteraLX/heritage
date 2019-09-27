@@ -2,8 +2,10 @@ import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { IPerson } from '../../models/person';
+import { IUser } from '../../models/user';
 import { APIService } from '../../services/api/api.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AuthenticationService } from '../../services/authentication/authentication.service';
 
 
 @Component({
@@ -18,9 +20,17 @@ export class ToolbarComponent implements OnInit {
 
   public persons: IPerson[];
 
+  public currentUser: IUser;
+
+
   @ViewChild(TemplateRef, {static: false}) content;
 
-  constructor(private apiService: APIService, private modalService: NgbModal, private router: Router) {
+  constructor(private apiService: APIService,
+              private modalService: NgbModal,
+              private router: Router,
+              private authenticationService: AuthenticationService
+  ) {
+    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
 
   ngOnInit() {
@@ -46,5 +56,10 @@ export class ToolbarComponent implements OnInit {
     if (event.code === 'Enter') {
       this.search();
     }
+  }
+
+  public async logout() {
+    this.authenticationService.logout();
+    await this.router.navigate(['/login']);
   }
 }
