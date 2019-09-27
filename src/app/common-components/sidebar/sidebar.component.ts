@@ -14,9 +14,7 @@ export class SidebarComponent implements OnInit {
   public faColumns: IconDefinition = faColumns;
   public faUserPlus: IconDefinition = faUserPlus;
   public faUserFriends: IconDefinition = faUserFriends;
-
-
-  private currentRoute: string;
+  public currentRoute: string;
 
   constructor(public route: ActivatedRoute) {
   }

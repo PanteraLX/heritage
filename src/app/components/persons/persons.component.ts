@@ -12,7 +12,7 @@ import { APIService } from '../../services/api/api.service';
 })
 export class PersonsComponent implements OnInit {
 
-  private persons$: Observable<IPerson[]>;
+  public persons$: Observable<IPerson[]>;
   public page = 1;
   public faUser = faUser;
 
