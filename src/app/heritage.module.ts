@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -9,6 +9,9 @@ import { ComponentsModule } from './components/components.module';
 import { HeritageComponent } from './heritage.component';
 import { HeritageRoutingModule } from './heritage.routing.module';
 import { CommonComponentsModule } from './common-components/common.module';
+import { ErrorInterceptor } from './interceptors/error/error.interceptor';
+import { fakeBackendProvider } from './interceptors/fake-backend/fake-backend.interceptor';
+import { JwtInterceptor } from './interceptors/jwt/jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,11 @@ import { CommonComponentsModule } from './common-components/common.module';
     CommonComponentsModule,
     ComponentsModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+    fakeBackendProvider
+  ],
   bootstrap: [
     HeritageComponent
   ]
