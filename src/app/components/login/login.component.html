@@ -1,1 +1,30 @@
-<heritage-login-form></heritage-login-form>
+<form class="form-signin text-center" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <h1 class="h3 mb-3 font-weight-normal">Login</h1>
+  <label for="inputEmail" class="sr-only">Mail-Adresse</label>
+  <input formControlName="username"
+         [ngClass]="{ 'is-invalid': submitted && f.username.errors }"
+         type="email"
+         id="inputEmail"
+         class="form-control"
+         placeholder="Mail-Adresse"
+         name="email"
+         required
+         autofocus>
+  <label for="inputPassword" class="sr-only">Passwort</label>
+  <input formControlName="password"
+         [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+         type="password"
+         id="inputPassword"
+         class="form-control"
+         placeholder="Passwort"
+         name="password"
+         required>
+  <div class="form-group">
+    <button [disabled]="loading" class="btn btn-lg btn-outline-primary">
+      <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+      Login
+    </button>
+    <a routerLink="/register" class="btn btn-link">Register</a>
+  </div>
+  <p class="mt-5 mb-3 text-muted">&copy; 2019</p>
+</form>

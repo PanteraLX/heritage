@@ -1,7 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
@@ -16,6 +16,7 @@ import { PersonSearchComponent } from './person-search/person-search.component';
 import { PersonComponent } from './person/person.component';
 import { PersonsComponent } from './persons/persons.component';
 import { UserComponent } from './user/user.component';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { UserComponent } from './user/user.component';
     PersonSearchComponent,
     LoginComponent,
     UserComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +40,8 @@ import { UserComponent } from './user/user.component';
     FontAwesomeModule,
     CommonModule,
     CommonComponentsModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule
   ], exports: [
     DashboardComponent,
     PersonCreateComponent,

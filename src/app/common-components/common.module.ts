@@ -4,7 +4,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { LoginFormComponent } from './login-form/login-form.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { FooterComponent } from './footer/footer.component';
@@ -17,7 +16,6 @@ import { TreeComponent } from './tree/tree.component';
 @NgModule({
   declarations: [
     ToolbarComponent,
-    LoginFormComponent,
     FooterComponent,
     PersonListComponent,
     FamilyListComponent,
@@ -36,7 +34,6 @@ import { TreeComponent } from './tree/tree.component';
   ],
   exports: [
     ToolbarComponent,
-    LoginFormComponent,
     FooterComponent,
     PersonListComponent,
     FamilyListComponent,

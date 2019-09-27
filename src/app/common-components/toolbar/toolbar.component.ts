@@ -2,7 +2,6 @@ import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { IPerson } from '../../models/person';
-import { LoginService } from '../../components/login/login.service';
 import { APIService } from '../../services/api/api.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
@@ -21,7 +20,7 @@ export class ToolbarComponent implements OnInit {
 
   @ViewChild(TemplateRef, {static: false}) content;
 
-  constructor(private apiService: APIService, private modalService: NgbModal, public loginService: LoginService, private router: Router) {
+  constructor(private apiService: APIService, private modalService: NgbModal, private router: Router) {
   }
 
   ngOnInit() {
