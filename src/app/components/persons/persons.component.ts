@@ -20,10 +20,10 @@ export class PersonsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.persons$ = this.apiService.fetch<IPerson[]>('persons', {limit: 10, offset: 0});
+    this.persons$ = this.apiService.fetch<IPerson[]>('person', {limit: 10, offset: 0});
   }
 
   onPageChange() {
-    this.persons$ = this.apiService.fetch<IPerson[]>('persons', {limit: 10, offset: (this.page - 1) * 10});
+    this.persons$ = this.apiService.fetch<IPerson[]>('person', {limit: 10, offset: (this.page - 1) * 10});
   }
 }

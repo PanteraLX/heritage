@@ -6,18 +6,21 @@ import { PersonCreateComponent } from './components/person-create/person-create.
 import { PersonSearchComponent } from './components/person-search/person-search.component';
 import { PersonComponent } from './components/person/person.component';
 import { PersonsComponent } from './components/persons/persons.component';
+import { RegisterComponent } from './components/register/register.component';
 import { UserComponent } from './components/user/user.component';
 import { LoginComponent } from './components/login/login.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
-  {path: 'person/new', component: PersonCreateComponent},
-  {path: 'person/connect', component: PersonConnectComponent},
-  {path: 'person/:key', component: PersonComponent},
-  {path: 'person', component: PersonSearchComponent},
-  {path: 'persons', component: PersonsComponent},
-  {path: 'user', component: UserComponent},
+  {path: 'person/new', component: PersonCreateComponent, canActivate: [AuthGuard]},
+  {path: 'person/connect', component: PersonConnectComponent, canActivate: [AuthGuard]},
+  {path: 'person/:key', component: PersonComponent, canActivate: [AuthGuard]},
+  {path: 'person', component: PersonSearchComponent, canActivate: [AuthGuard]},
+  {path: 'persons', component: PersonsComponent, canActivate: []},
+  {path: 'user', component: UserComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
-  {path: '', component: DashboardComponent}
+  {path: 'register', component: RegisterComponent},
+  {path: '', component: DashboardComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

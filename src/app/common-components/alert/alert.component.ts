@@ -5,7 +5,7 @@ import { AlertService } from '../../services/alert/alert.service';
 @Component({
   selector: 'heritage-alert',
   templateUrl: 'alert.component.html',
-  styleUrls: ['./alert.component.sass']
+  styleUrls: ['./alert.component.scss']
 })
 export class AlertComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
@@ -32,5 +32,9 @@ export class AlertComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  public close() {
+    this.message = '';
   }
 }
