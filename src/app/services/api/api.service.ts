@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -23,24 +22,15 @@ export class APIService {
     return this.http.post<T>(url, data);
   }
 
-  public update(url, data): Promise<any> {
-    return this.http.put<any>(url + '/' + data._id, data)
-      .pipe(
-        tap(() => null, (error) => {
-          console.log(error);
-        }),
-        map((response) => response.result))
-      .toPromise();
+  public update<T>(resource: string, data: any): Observable<T> {
+    const url = this.getUrl(resource);
+    return this.http.put<T>(url, data);
+
   }
 
-  public delete(url, data) {
-    return this.http.delete<any>(url + '/' + data._id)
-      .pipe(
-        tap(() => null, (error) => {
-          console.log(error);
-        }),
-        map((response) => response.result))
-      .toPromise();
+  public delete<T>(resource: string): Observable<T> {
+    const url = this.getUrl(resource);
+    return this.http.delete<T>(url);
   }
 
   private getUrl(resource: string, options?: any): string {
