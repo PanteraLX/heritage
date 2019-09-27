@@ -1,0 +1,163 @@
+<form class="needs-validation card bg-light">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <div class="custom-control custom-radio custom-control-inline">
+          <input type="radio" id="male" name="sex" class="custom-control-input" value="M"
+                 [(ngModel)]="person.sex"
+                 (ngModelChange)="dirty = true"
+          >
+          <label class="custom-control-label" for="male">Männlich</label>
+        </div>
+        <div class="custom-control custom-radio custom-control-inline">
+          <input type="radio" id="female" name="sex" class="custom-control-input" value="F"
+                 [(ngModel)]="person.sex"
+                 (ngModelChange)="dirty = true"
+          >
+          <label class="custom-control-label" for="female">Weiblich</label>
+        </div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="dead" name="dead" [(ngModel)]="person.dead"
+                 (ngModelChange)="dirty = true">
+          <label class="custom-control-label" for="dead">Verstorben</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="givenName">Vorname</label>
+        <input type="text"
+               class="form-control"
+               id="givenName"
+               name="givenName"
+               placeholder="Vorname"
+               [(ngModel)]="person.givenName"
+               (ngModelChange)="dirty = true"
+               required>
+        <div class="invalid-feedback">
+          Valid first name is required.
+        </div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="surName">Name<span *ngIf="person.sex === 'F'"> (ledig)</span></label>
+        <input type="text"
+               class="form-control"
+               id="surName"
+               name="surName"
+               placeholder="Name"
+               [(ngModel)]="person.surName"
+               (ngModelChange)="dirty = true"
+               required>
+        <div class="invalid-feedback">
+          Valid last name is required.
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="nickName">Übername</label>
+        <input type="text"
+               class="form-control"
+               id="nickName"
+               name="nickName"
+               placeholder="Übername"
+               [(ngModel)]="person.nickName"
+               (ngModelChange)="dirty = true"
+               required>
+        <div class="invalid-feedback">
+          Valid first name is required.
+        </div>
+      </div>
+      <div class="col-md-6 mb-3" *ngIf="person.sex === 'F'">
+        <label for="birthName">Name (verheiratet)</label>
+        <input type="text"
+               class="form-control"
+               id="birthName"
+               name="birthName"
+               placeholder="Ehename"
+               [(ngModel)]="person.birthName"
+               (ngModelChange)="dirty = true"
+               required>
+        <div class="invalid-feedback">
+          Valid last name is required.
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="birthDate">Geburtsdatum</label>
+        <input type="date"
+               class="form-control"
+               id="birthDate"
+               name="birthDate"
+               placeholder="Geburtsdatum"
+               [ngModel]="person.birthDate | date:'yyyy-MM-dd'"
+               (ngModelChange)="onChange($event, 'birthDate')"
+               required>
+        <div class="invalid-feedback">
+          Valid first name is required.
+        </div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="birthPlace">Geburtsort</label>
+        <input type="text"
+               class="form-control"
+               id="birthPlace"
+               name="birthPlace"
+               placeholder="Geburtsort"
+               [(ngModel)]="person.birthPlace"
+               (ngModelChange)="dirty = true"
+               required>
+        <div class="invalid-feedback">
+          Valid last name is required.
+        </div>
+      </div>
+    </div>
+
+    <div class="row" *ngIf="person.dead">
+      <div class="col-md-6 mb-3">
+        <label for="deathDate">Sterbedatum</label>
+        <input type="date"
+               class="form-control"
+               id="deathDate"
+               name="deathDate"
+               placeholder="Sterbedatum"
+               [ngModel]="person.deathDate | date:'yyyy-MM-dd'"
+               (ngModelChange)="onChange($event, 'deathDate')"
+               required>
+        <div class="invalid-feedback">
+          Valid first name is required.
+        </div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="deathPlace">Sterbeort</label>
+        <input type="text"
+               class="form-control"
+               id="deathPlace"
+               name="deathPlace"
+               placeholder="Sterbeort"
+               [(ngModel)]="person.deathPlace"
+               (ngModelChange)="dirty = true"
+               required>
+        <div class="invalid-feedback">
+          Valid last name is required.
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="card-footer bg-light">
+    <button type="submit" class="btn btn-outline-success" (click)="onSubmit()" [disabled]="!dirty">
+      <span class="spinner-border spinner-border-sm" role="status" *ngIf="submitting"></span> Speichern
+    </button>
+    <button type="submit" class="btn btn-outline-danger float-right" (click)="onSubmit()" [disabled]="true">
+      <span class="spinner-border spinner-border-sm" role="status" *ngIf="submitting"></span> Löschen
+    </button>
+  </div>
+</form>
+

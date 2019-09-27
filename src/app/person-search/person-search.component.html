@@ -1,0 +1,109 @@
+<div class="container-fluid">
+  <div class="row">
+    <heritage-sidebar></heritage-sidebar>
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+        <h1 class="h2">Personensuche</h1>
+      </div>
+
+      <div class="row">
+        <div class="col-md-8 order-md-1" *ngIf="extendedSearch">
+          <form class="needs-validation" novalidate>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="searchFirstName">Vorname</label>
+                <input type="text"
+                       class="form-control"
+                       id="searchFirstName"
+                       name="searchFirstName"
+                       placeholder="Vorname"
+                       [(ngModel)]="searchPerson.givenName"
+                       required>
+                <div class="invalid-feedback">
+                  Valid first name is required.
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="searchLastName">Name</label>
+                <input type="text"
+                       class="form-control"
+                       id="searchLastName"
+                       name="searchLastName"
+                       placeholder="Name"
+                       [(ngModel)]="searchPerson.surName"
+                       required>
+                <div class="invalid-feedback">
+                  Valid last name is required.
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="searchBirthYear">Geburtsjahr</label>
+                <input type="number"
+                       class="form-control"
+                       id="searchBirthYear"
+                       name="searchBirthYear"
+                       placeholder="Geburtsjahr"
+                       min="1400"
+                       max="2100"
+                       [(ngModel)]="searchPerson.birthYear"
+                       required>
+                <div class="invalid-feedback">
+                  Valid first name is required.
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="searchDeathYear">Todesjahr</label>
+                <input type="number"
+                       class="form-control"
+                       id="searchDeathYear"
+                       name="searchDeathYear"
+                       placeholder="Todesjahr"
+                       min="1400"
+                       max="2100"
+                       [(ngModel)]="searchPerson.deathYear"
+                       required>
+                <div class="invalid-feedback">
+                  Valid first name is required.
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <button type="button"
+                        class="btn btn-outline-success"
+                        id="search"
+                        (click)="search()"
+                        [value]="searchPerson.birthYear">
+                  Suchen
+                </button>
+                <div class="invalid-feedback">
+                  Valid first name is required.
+                </div>
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-md-8 order-md-1" *ngIf="searchResult">
+          <heritage-person-list
+            [showBadge]="true"
+            [persons]="searchResult"
+            [title]="'Suchresultate'"
+            (buttonPressed)="router.navigate(['person', $event._key])"
+          >
+          </heritage-person-list>
+        </div>
+      </div>
+
+    </main>
+
+  </div>
+</div>

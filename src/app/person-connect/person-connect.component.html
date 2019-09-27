@@ -1,0 +1,74 @@
+<div class="container-fluid">
+  <div class="row">
+    <heritage-sidebar></heritage-sidebar>
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+        <h1 class="h2">Personen verbinden</h1>
+      </div>
+
+      <div class="row">
+        <div class="card col-md-12">
+          <div class="card-body bg-light">
+            <div class="row">
+              <div class="col-md-6 order-md-1">
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                  <span class="text-muted">Person 1</span>
+                </h4>
+
+                <input class="form-control form-control-dark wd-80" type="text" placeholder="" aria-label="Search"
+                       aria-describedby="search" name="search1" [(ngModel)]="searchString1">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-success" type="button" id="search1"
+                          (click)="search1()">Suchen
+                  </button>
+                </div>
+
+                <heritage-person-list
+                  *ngIf="persons1"
+                  [persons]="persons1"
+                  [faIcon]="faIcon"
+                  (buttonPressed)="onButtonPressed1($event)"
+                ></heritage-person-list>
+
+                <ul class="list-group mb-3" *ngIf="person1">
+                  <li class="list-group-item d-flex justify-content-between lh-condensed bg-light border-success">
+                    <div>
+                      <h6 class="my-0">{{ person1.givenName + ' ' + person1.surName }}</h6>
+                      <small class="text-muted"
+                             *ngIf="person1.birthDate || person1.deathDate">{{ person1.birthDate | date: 'yyyy' }}
+                        - {{ person1.deathDate | date: 'yyyy' }}</small>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+
+              <div class="col-md-6 order-md-1">
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                  <span class="text-muted">Person 2</span>
+                </h4>
+
+                <input class="form-control form-control-dark" type="text" placeholder="" aria-label="Search"
+                       aria-describedby="search" name="search2" [(ngModel)]="searchString2">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-success" type="button" id="search2"
+                          (click)="search2()">Suchen
+                  </button>
+                </div>
+                <heritage-person-list
+                  *ngIf="persons2"
+                  [persons]="persons2"
+                  [faIcon]="faIcon"
+                  (buttonPressed)="onButtonPressed2($event)"
+                ></heritage-person-list>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </main>
+  </div>
+</div>

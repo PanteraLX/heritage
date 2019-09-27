@@ -1,0 +1,19 @@
+<h4 class="d-flex justify-content-between align-items-center mb-3" *ngIf="title">
+  <span class="text-muted">{{ title }}</span>
+  <span class="badge badge-secondary badge-pill" *ngIf="showBadge">{{ persons.length}}</span>
+</h4>
+<ul class="list-group mb-3">
+  <li class="list-group-item d-flex justify-content-between lh-condensed bg-light" *ngFor="let person of persons">
+    <div>
+      <h6 class="my-0">{{ person.givenName + ' ' + person.surName }}</h6>
+      <small class="text-muted" *ngIf="person.birthDate || person.deathDate">{{ person.birthDate | date: 'yyyy' }} - {{ person.deathDate | date: 'yyyy' }}</small>
+    </div>
+    <span class="text-muted">
+      <a (click)="buttonPressed.emit(person)">
+        <button class="btn btn-outline-dark">
+          <fa-icon [icon]="faIcon || faUser"></fa-icon>
+        </button>
+      </a>
+    </span>
+  </li>
+</ul>

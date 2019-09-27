@@ -1,0 +1,39 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Suchresultate <span
+      class="small badge badge-secondary badge-pill">{{ persons.length}}</span></h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <heritage-person-list
+      [showBadge]="true"
+      [persons]="persons"
+      (buttonPressed)="onButtonPressed($event, modal)"
+    >
+    </heritage-person-list>
+  </div>
+</ng-template>
+
+<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+  <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Stammbaum Visperterminen</a>
+
+    <input class="form-control form-control-dark w-100" *ngIf="loginService.loggedIn"
+           type="text"
+           placeholder=""
+           aria-label="Search"
+           aria-describedby="search"
+           name="search"
+           (keypress)="onKeyPressed($event)"
+           [(ngModel)]="searchString">
+    <div class="input-group-append" *ngIf="loginService.loggedIn">
+      <button class="btn btn-outline-success" type="button" id="search" (click)="search()">Suchen</button>
+    </div>
+    <ul class="navbar-nav px-3" *ngIf="loginService.loggedIn">
+      <li class="nav-item text-nowrap">
+        <a class="nav-link" href="#">Sign out</a>
+      </li>
+    </ul>
+</nav>
+

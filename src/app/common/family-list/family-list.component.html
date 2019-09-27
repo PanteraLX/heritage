@@ -1,0 +1,22 @@
+<heritage-person-list
+  *ngIf="parents"
+  [persons]="parents"
+  [title]="'Eltern'"
+  (buttonPressed)="router.navigate(['person', $event._key])"
+>
+</heritage-person-list>
+<heritage-person-list
+  *ngIf="partners"
+  [persons]="partners"
+  [title]="'Partner'"
+  (buttonPressed)="router.navigate(['person', $event._key])"
+>
+</heritage-person-list>
+<heritage-person-list
+  *ngIf="children"
+  [persons]="children"
+  [title]="'Kinder'"
+  [showBadge]="true"
+  (buttonPressed)="router.navigate(['person', $event._key])"
+>
+</heritage-person-list>

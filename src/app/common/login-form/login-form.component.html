@@ -1,0 +1,27 @@
+<form class="form-signin text-center">
+  <h1 class="h3 mb-3 font-weight-normal">Login</h1>
+  <label for="inputEmail" class="sr-only">Mail-Adresse</label>
+  <input [(ngModel)]="loginService.username"
+         type="email"
+         id="inputEmail"
+         class="form-control"
+         placeholder="Mail-Adresse"
+         name="email"
+         required
+         autofocus>
+  <label for="inputPassword" class="sr-only">Passwort</label>
+  <input [(ngModel)]="loginService.password"
+         type="password"
+         id="inputPassword"
+         class="form-control"
+         placeholder="Passwort"
+         name="password"
+         required>
+  <div class="checkbox mb-3">
+    <label>
+      <input type="checkbox" value="remember-me"> Remember me
+    </label>
+  </div>
+  <button class="btn btn-lg btn-outline-primary btn-block" type="submit" (click)="loginService.login()">Sign in</button>
+  <p class="mt-5 mb-3 text-muted">&copy; 2019</p>
+</form>
