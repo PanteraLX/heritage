@@ -19,21 +19,22 @@
 <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
   <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Stammbaum Visperterminen</a>
 
-    <input class="form-control form-control-dark w-100"
-           type="text"
-           placeholder=""
-           aria-label="Search"
-           aria-describedby="search"
-           name="search"
-           (keypress)="onKeyPressed($event)"
-           [(ngModel)]="searchString">
-    <div class="input-group-append">
-      <button class="btn btn-outline-success" type="button" id="search" (click)="search()">Suchen</button>
-    </div>
-    <ul class="navbar-nav px-3">
-      <li class="nav-item text-nowrap">
-        <a class="nav-link" (click)="logout()">Sign out</a>
-      </li>
-    </ul>
+  <input class="form-control form-control-dark w-100"
+         *ngIf="currentUser"
+         type="text"
+         placeholder=""
+         aria-label="Search"
+         aria-describedby="search"
+         name="search"
+         (keypress)="onKeyPressed($event)"
+         [(ngModel)]="searchString">
+  <div class="input-group-append" *ngIf="currentUser">
+    <button class="btn btn-outline-success" type="button" id="search" (click)="search()">Suchen</button>
+  </div>
+  <ul class="navbar-nav px-3" *ngIf="currentUser">
+    <li class="nav-item text-nowrap">
+      <a class="nav-link" (click)="logout()">Sign out</a>
+    </li>
+  </ul>
 </nav>
 

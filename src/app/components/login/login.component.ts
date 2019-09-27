@@ -7,7 +7,8 @@ import { AlertService } from '../../services/alert/alert.service';
 import { AuthenticationService } from '../../services/authentication/authentication.service';
 
 @Component({
-  templateUrl: 'login.component.html'
+  templateUrl: 'login.component.html',
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
@@ -62,8 +63,6 @@ export class LoginComponent implements OnInit {
           this.router.navigate([this.returnUrl]);
         },
         (error) => {
-          console.log(error);
-
           this.alertService.error(error);
           this.loading = false;
         });

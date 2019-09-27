@@ -16,12 +16,8 @@ import { AuthenticationService } from '../../services/authentication/authenticat
 export class ToolbarComponent implements OnInit {
 
   public searchString: string;
-  public closeResult: string;
-
   public persons: IPerson[];
-
   public currentUser: IUser;
-
 
   @ViewChild(TemplateRef, {static: false}) content;
 
@@ -30,7 +26,7 @@ export class ToolbarComponent implements OnInit {
               private router: Router,
               private authenticationService: AuthenticationService
   ) {
-    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+    this.authenticationService.currentUser.subscribe((user: IUser) => this.currentUser = user);
   }
 
   ngOnInit() {
