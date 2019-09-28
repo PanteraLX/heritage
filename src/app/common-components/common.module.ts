@@ -11,7 +11,6 @@ import { PersonListComponent } from './person-list/person-list.component';
 import { FamilyListComponent } from './family-list/family-list.component';
 import { PersonFormComponent } from './person-form/person-form.component';
 import { AlertComponent } from './alert/alert.component';
-import { TreeComponent } from './tree/tree.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +20,6 @@ import { TreeComponent } from './tree/tree.component';
     FamilyListComponent,
     PersonFormComponent,
     AlertComponent,
-    TreeComponent,
     SidebarComponent
   ],
   imports: [
@@ -39,7 +37,6 @@ import { TreeComponent } from './tree/tree.component';
     FamilyListComponent,
     PersonFormComponent,
     AlertComponent,
-    TreeComponent,
     SidebarComponent
   ]
 })

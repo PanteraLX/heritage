@@ -58,8 +58,8 @@ export class GraphComponent implements OnInit {
       }
     });
 
-    const svg = d3.create('svg')
-      .attr('viewBox', [0, 0, width, x1 - x0 + root.dx * 2]);
+    // @ts-ignore
+    const svg = d3.create('svg').attr('viewBox', [0, 0, width, x1 - x0 + root.dx * 2]);
 
     const g = svg.append('g')
       .attr('font-family', 'sans-serif')
