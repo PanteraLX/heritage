@@ -1,17 +1,11 @@
-import { Component, ElementRef, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { forkJoin, Observable, of } from 'rxjs';
-import { flatMap, map, tap } from 'rxjs/operators';
+import { IFamily } from '../../models/family.model';
 import { IPerson } from '../../models/person.model';
 import { APIService } from '../../services/api/api.service';
-// import { data } from './data';
 import * as d3 from 'd3';
 
 const width = 932;
-
-interface ITreePerson extends IPerson {
-  children?: ITreePerson[];
-}
 
 @Component({
   selector: 'heritage-graph',
@@ -19,12 +13,12 @@ interface ITreePerson extends IPerson {
   styleUrls: ['./graph.component.scss']
 })
 export class GraphComponent implements OnInit {
-  public person: ITreePerson;
-  public key: string;
-  public graph: SVGElement;
+  private person: IFamily;
+  private key: string;
+  private graph: SVGElement;
+  private root: d3.HierarchyPointNode<unknown>;
 
-  @ViewChild('graphy', {static: true}) graphy: ElementRef<HTMLDivElement>;
-
+  @ViewChild('graphElement', {static: true}) graphElement: ElementRef<HTMLDivElement>;
 
   constructor(private route: ActivatedRoute, private apiService: APIService, private router: Router) {
   }
@@ -32,44 +26,27 @@ export class GraphComponent implements OnInit {
   async ngOnInit() {
     if (this.person) {
       this.graph = this.getGraph(this.person);
-      this.graphy.nativeElement.appendChild(this.graph);
+      this.graphElement.nativeElement.appendChild(this.graph);
       return;
     }
 
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
-      this.graphy.nativeElement.innerHTML = '';
+      this.graphElement.nativeElement.innerHTML = '';
       this.key = paramMap.get('key');
       if (!this.key) {
         return;
       }
-      this.apiService.fetch<IPerson>('person' + '/' + this.key)
+      this.apiService.fetch<IFamily>('family/descendants' + '/' + this.key)
         .subscribe(async (person: IPerson) => {
-          this.getRecursive(person).subscribe((treePerson: ITreePerson) => {
-            this.person = treePerson;
-            this.graph = this.getGraph(this.person);
-            this.graphy.nativeElement.appendChild(this.graph);
-          });
+          this.person = person;
+          this.root = this.getTree(this.person);
+          this.graph = this.getGraph(this.root);
+          this.graphElement.nativeElement.appendChild(this.graph);
         });
     });
   }
 
-  private getRecursive(person: ITreePerson): Observable<ITreePerson> {
-    return this.apiService.fetch<IPerson[]>('family/children' + '/' + person._key)
-      .pipe(
-        map(children => ({parent: person, children})),
-        flatMap(parentWithChildIds => forkJoin([
-          of(parentWithChildIds.parent),
-          ...parentWithChildIds.children.map(child => this.getRecursive(child))
-        ])),
-        tap(([parent, ...children]) => parent.children = children),
-        map(([parent,]) => parent)
-      );
-  }
-
-
-  public getGraph(data) {
-    const root = this.tree(data);
-
+  public getGraph(root) {
     let x0 = Infinity;
     let x1 = -x0;
     root.each(d => {
@@ -126,19 +103,13 @@ export class GraphComponent implements OnInit {
     return svg.node();
   }
 
-  public tree(data) {
+  public getTree(data: IFamily): d3.HierarchyPointNode<unknown> {
     const root: any = d3.hierarchy(data);
     root.dx = 10;
     root.dy = width / (root.height + 1);
     return d3.tree().nodeSize([root.dx, root.dy])(root);
-
   }
 
   private click(d: Node) {
-    this.graphy.nativeElement.innerHTML = '';
-    this.person = d.data
-    this.router.navigate(['/graph', d.data._key]);
   }
-
-
 }
