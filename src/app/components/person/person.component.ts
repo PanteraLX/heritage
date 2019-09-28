@@ -21,7 +21,7 @@ export class PersonComponent implements OnInit {
 
   public faProjectDiagram: IconDefinition = faProjectDiagram;
 
-  private submitting: boolean;
+  public submitting: boolean;
 
   @ViewChild(TemplateRef, {static: false}) content;
   private relationship: string;
