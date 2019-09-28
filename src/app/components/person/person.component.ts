@@ -17,6 +17,7 @@ export class PersonComponent implements OnInit {
   public key: string = undefined;
 
   public faProjectDiagram: IconDefinition = faProjectDiagram;
+  private submitting: boolean;
 
   constructor(private apiService: APIService, private route: ActivatedRoute) {
 
@@ -30,6 +31,15 @@ export class PersonComponent implements OnInit {
       }
       this.apiService.fetch<IFamily>('family' + '/' + this.key)
         .subscribe((person: IFamily) => this.person = person);
+    });
+  }
+
+  public submit() {
+    this.submitting = true;
+    this.person.lastUpdated = new Date();
+    this.apiService.update<IPerson>('person', this.person)
+      .subscribe(() => {
+      setTimeout(() => this.submitting = false, 500);
     });
   }
 }

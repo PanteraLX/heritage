@@ -7,7 +7,7 @@
       </div>
       <div class="row" *ngIf="person">
         <div class="col-md-8 order-md-1">
-          <heritage-person-form [person]="person"></heritage-person-form>
+          <heritage-person-form [person]="person" (onSubmit)="submit()" [submitting]="submitting"></heritage-person-form>
         </div>
       </div>
     </main>

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IPerson } from '../../models/person.model';
 import { APIService } from '../../services/api/api.service';
@@ -11,23 +11,15 @@ import { APIService } from '../../services/api/api.service';
 export class PersonFormComponent implements OnInit {
 
   @Input() person: IPerson;
+  @Input() submitting: boolean;
 
-  public submitting = false;
   public dirty = false;
+  @Output() onSubmit = new EventEmitter<IPerson>();
 
-  constructor(private apiService: APIService) {
+  constructor() {
   }
 
   ngOnInit() {
-  }
-
-  public onSubmit() {
-    this.submitting = true;
-    this.person.lastUpdated = new Date();
-    const person$: Observable<IPerson> = this.apiService.post<IPerson>('person', this.person);
-    person$.subscribe(() => {
-      setTimeout(() => this.submitting = false, 500);
-    });
   }
 
   public onChange(event: string, attribute: string) {

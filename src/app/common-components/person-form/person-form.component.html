@@ -152,11 +152,11 @@
 
   </div>
   <div class="card-footer bg-light">
-    <button type="submit" class="btn btn-outline-success" (click)="onSubmit()" [disabled]="!dirty">
+    <button type="submit" class="btn btn-outline-success" (click)="onSubmit.emit(person)" [disabled]="!dirty">
       <span class="spinner-border spinner-border-sm" role="status" *ngIf="submitting"></span> Speichern
     </button>
-    <button type="submit" class="btn btn-outline-danger float-right" (click)="onSubmit()" [disabled]="true">
-      <span class="spinner-border spinner-border-sm" role="status" *ngIf="submitting"></span> Löschen
+    <button type="submit" class="btn btn-outline-danger float-right" [disabled]="true">
+      <span class="spinner-border spinner-border-sm" role="status" *ngIf="false"></span> Löschen
     </button>
   </div>
 </form>

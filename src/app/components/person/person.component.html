@@ -19,7 +19,7 @@
               <fa-icon [icon]="faProjectDiagram"></fa-icon>
             </button>
           </h4>
-          <heritage-person-form [person]="person"></heritage-person-form>
+          <heritage-person-form [person]="person" (onSubmit)="submit()" [submitting]="submitting"></heritage-person-form>
         </div>
         <div class="col-md-4 order-md-2 mb-4" >
           <heritage-family-list [family]="person"></heritage-family-list>
