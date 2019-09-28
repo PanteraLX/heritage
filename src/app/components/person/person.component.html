@@ -1,3 +1,31 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Relation suchen</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form class="mb-4">
+      <div class="row">
+        <div class="col-auto">
+          <input type="text" class="form-control" placeholder="Vorname Name" #searchElement>
+        </div>
+        <div class="col-auto">
+          <button (click)="search(searchElement.value)" class="btn btn-outline-success">Suchen</button>
+        </div>
+      </div>
+    </form>
+
+    <heritage-person-list *ngIf="persons"
+                          [showListBadge]="true"
+                          [persons]="persons"
+                          (onUserAction)="onButtonPressed($event)"
+    >
+    </heritage-person-list>
+  </div>
+</ng-template>
+
 <div class="container-fluid">
   <div class="row">
     <heritage-sidebar></heritage-sidebar>
@@ -19,13 +47,14 @@
               <fa-icon [icon]="faProjectDiagram"></fa-icon>
             </button>
           </h4>
-          <heritage-person-form [person]="person" (onSubmit)="submit()" [submitting]="submitting"></heritage-person-form>
+          <heritage-person-form [person]="person" (onSubmit)="onSubmit()" [submitting]="submitting"></heritage-person-form>
         </div>
         <div class="col-md-4 order-md-2 mb-4" >
-          <heritage-family-list [family]="person"></heritage-family-list>
+          <heritage-family-list [family]="person" (onListAction)="onListAction($event)"></heritage-family-list>
         </div>
       </div>
     </main>
   </div>
 </div>
+
 

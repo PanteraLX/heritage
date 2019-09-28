@@ -8,9 +8,9 @@
   </div>
   <div class="modal-body">
     <heritage-person-list
-      [showBadge]="true"
+      [showListBadge]="true"
       [persons]="persons"
-      (buttonPressed)="onButtonPressed($event, modal)"
+      (onUserAction)="onButtonPressed($event, modal)"
     >
     </heritage-person-list>
   </div>

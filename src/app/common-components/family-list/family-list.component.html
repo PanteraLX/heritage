@@ -2,21 +2,27 @@
   *ngIf="family.parents"
   [persons]="family.parents"
   [title]="'Eltern'"
-  (buttonPressed)="router.navigate(['person', $event._key])"
+  [showListActionButton]="true"
+  (onListAction)="onListAction.emit(relation.PARENT)"
+  (onUserAction)="router.navigate(['person', $event._key])"
 >
 </heritage-person-list>
 <heritage-person-list
   *ngIf="family.partners"
   [persons]="family.partners"
   [title]="'Partner'"
-  (buttonPressed)="router.navigate(['person', $event._key])"
+  [showListActionButton]="true"
+  (onListAction)="onListAction.emit(relation.PARTNER)"
+  (onUserAction)="router.navigate(['person', $event._key])"
 >
 </heritage-person-list>
 <heritage-person-list
   *ngIf="family.children"
   [persons]="family.children"
   [title]="'Kinder'"
-  [showBadge]="true"
-  (buttonPressed)="router.navigate(['person', $event._key])"
+  [showListBadge]="true"
+  [showListActionButton]="true"
+  (onListAction)="onListAction.emit(relation.CHILD)"
+  (onUserAction)="router.navigate(['person', $event._key])"
 >
 </heritage-person-list>

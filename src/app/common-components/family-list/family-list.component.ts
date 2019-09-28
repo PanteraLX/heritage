@@ -1,6 +1,7 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { IFamily } from '../../models/family.model';
+import { Relation } from '../../models/relation.model';
 import { APIService } from '../../services/api/api.service';
 
 @Component({
@@ -10,6 +11,9 @@ import { APIService } from '../../services/api/api.service';
 })
 export class FamilyListComponent implements OnInit {
   @Input() family: IFamily;
+
+  @Output() onListAction = new EventEmitter<string>();
+  public relation = Relation;
 
   constructor(private apiService: APIService, public router: Router) {
   }

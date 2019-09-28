@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { faUser, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faUser, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { IPerson } from '../../models/person.model';
 
 @Component({
@@ -12,10 +12,14 @@ export class PersonListComponent implements OnInit {
 
   @Input() persons: IPerson[];
   @Input() title: string;
-  @Input() showBadge: boolean;
-  @Input() faIcon: IconDefinition ;
+  @Input() showListBadge: boolean;
+  @Input() showListActionButton: boolean;
 
-  @Output() buttonPressed = new EventEmitter<IPerson>();
+  @Input() userActionIcon: IconDefinition;
+  @Input() listActionIcon: IconDefinition = faPlus;
+
+  @Output() onUserAction = new EventEmitter<IPerson>();
+  @Output() onListAction = new EventEmitter<IPerson>();
 
   public faUser: IconDefinition = faUser;
 

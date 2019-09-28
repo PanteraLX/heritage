@@ -11,6 +11,7 @@ import { PersonListComponent } from './person-list/person-list.component';
 import { FamilyListComponent } from './family-list/family-list.component';
 import { PersonFormComponent } from './person-form/person-form.component';
 import { AlertComponent } from './alert/alert.component';
+import { RelationComponent } from './relation/relation.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { AlertComponent } from './alert/alert.component';
     FamilyListComponent,
     PersonFormComponent,
     AlertComponent,
-    SidebarComponent
+    SidebarComponent,
   ],
   imports: [
     CommonModule,
@@ -37,7 +38,7 @@ import { AlertComponent } from './alert/alert.component';
     FamilyListComponent,
     PersonFormComponent,
     AlertComponent,
-    SidebarComponent
+    SidebarComponent,
   ]
 })
 export class CommonComponentsModule {

@@ -26,8 +26,8 @@
                 <heritage-person-list
                   *ngIf="persons1"
                   [persons]="persons1"
-                  [faIcon]="faIcon"
-                  (buttonPressed)="onButtonPressed1($event)"
+                  [userActionIcon]="faIcon"
+                  (onUserAction)="onButtonPressed1($event)"
                 ></heritage-person-list>
 
                 <ul class="list-group mb-3" *ngIf="person1">
@@ -58,8 +58,8 @@
                 <heritage-person-list
                   *ngIf="persons2"
                   [persons]="persons2"
-                  [faIcon]="faIcon"
-                  (buttonPressed)="onButtonPressed2($event)"
+                  [userActionIcon]="faIcon"
+                  (onUserAction)="onButtonPressed2($event)"
                 ></heritage-person-list>
               </div>
 

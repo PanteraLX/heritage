@@ -94,10 +94,10 @@
       <div class="row">
         <div class="col-md-8 order-md-1" *ngIf="searchResult">
           <heritage-person-list
-            [showBadge]="true"
+            [showListBadge]="true"
             [persons]="searchResult"
             [title]="'Suchresultate'"
-            (buttonPressed)="router.navigate(['person', $event._key])"
+            (onUserAction)="router.navigate(['person', $event._key])"
           >
           </heritage-person-list>
         </div>
