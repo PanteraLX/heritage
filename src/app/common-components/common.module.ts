@@ -11,7 +11,6 @@ import { PersonListComponent } from './person-list/person-list.component';
 import { FamilyListComponent } from './family-list/family-list.component';
 import { PersonFormComponent } from './person-form/person-form.component';
 import { AlertComponent } from './alert/alert.component';
-import { RelationComponent } from './relation/relation.component';
 
 @NgModule({
   declarations: [
