@@ -10,12 +10,19 @@
       <div class="row" *ngIf="person">
         <div class="col-md-8 order-md-1">
           <h4 class="d-flex justify-content-between align-items-center mb-3" >
-            <span class="text-muted">{{person.givenName}} {{person.surName}} <span class="small ml-2">({{person._key}})</span></span>
+            <span class="text-muted">
+              {{person.givenName}} {{person.surName}}
+              <span class="small ml-2">({{person._key}})</span>
+
+            </span>
+            <button class="btn btn-secondary ml-5 float-right" [routerLink]="['/graph', person._key]">
+              <fa-icon [icon]="faProjectDiagram"></fa-icon>
+            </button>
           </h4>
           <heritage-person-form [person]="person"></heritage-person-form>
         </div>
         <div class="col-md-4 order-md-2 mb-4" >
-          <heritage-family-list [person]="person"></heritage-family-list>
+          <heritage-family-list [family]="person"></heritage-family-list>
         </div>
       </div>
     </main>

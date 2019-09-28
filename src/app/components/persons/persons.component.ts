@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { Observable } from 'rxjs';
-import { IPerson } from '../../models/person';
+import { IPerson } from '../../models/person.model';
 import { APIService } from '../../services/api/api.service';
 
 

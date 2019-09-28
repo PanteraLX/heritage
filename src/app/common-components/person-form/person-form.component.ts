@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IPerson } from '../../models/person';
+import { IPerson } from '../../models/person.model';
 import { APIService } from '../../services/api/api.service';
 
 @Component({

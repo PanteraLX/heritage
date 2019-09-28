@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { faUser, IconDefinition } from '@fortawesome/free-solid-svg-icons';
-import { IPerson } from '../../models/person';
+import { IPerson } from '../../models/person.model';
 
 @Component({
   selector: 'heritage-person-list',

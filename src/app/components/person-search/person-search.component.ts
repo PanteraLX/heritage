@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { IPerson } from '../../models/person';
+import { IPerson } from '../../models/person.model';
 import { APIService } from '../../services/api/api.service';
 interface ISearchPerson {
   givenName?: string;

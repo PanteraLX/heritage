@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-import { IUser } from '../../models/user';
+import { IUser } from '../../models/user.model';
 import { AlertService } from '../../services/alert/alert.service';
 import { AuthenticationService } from '../../services/authentication/authentication.service';
 

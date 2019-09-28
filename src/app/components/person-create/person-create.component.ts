@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IPerson } from '../../models/person';
+import { IPerson } from '../../models/person.model';
 
 @Component({
   selector: 'heritage-person-create',

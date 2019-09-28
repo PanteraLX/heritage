@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { faCross } from '@fortawesome/free-solid-svg-icons';
+import { IconDefinition, faProjectDiagram } from '@fortawesome/free-solid-svg-icons';
 import { Observable } from 'rxjs';
-import { IPerson } from '../../models/person';
+import { IFamily } from '../../models/family.model';
+import { IPerson } from '../../models/person.model';
 import { APIService } from '../../services/api/api.service';
 
 @Component({
@@ -12,8 +13,10 @@ import { APIService } from '../../services/api/api.service';
 })
 export class PersonComponent implements OnInit {
 
-  public person: IPerson;
+  public person: IFamily;
   public key: string = undefined;
+
+  public faProjectDiagram: IconDefinition = faProjectDiagram;
 
   constructor(private apiService: APIService, private route: ActivatedRoute) {
 
@@ -25,8 +28,8 @@ export class PersonComponent implements OnInit {
       if (!this.key) {
         return;
       }
-      const person$: Observable<IPerson> = this.apiService.fetch<IPerson>('person' + '/' + this.key);
-      person$.subscribe((person: IPerson) => this.person = person);
+      this.apiService.fetch<IFamily>('family' + '/' + this.key)
+        .subscribe((person: IFamily) => this.person = person);
     });
   }
 }

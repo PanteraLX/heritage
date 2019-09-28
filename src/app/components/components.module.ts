@@ -17,6 +17,7 @@ import { PersonComponent } from './person/person.component';
 import { PersonsComponent } from './persons/persons.component';
 import { UserComponent } from './user/user.component';
 import { RegisterComponent } from './register/register.component';
+import { GraphComponent } from './graph/graph.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { RegisterComponent } from './register/register.component';
     LoginComponent,
     UserComponent,
     RegisterComponent,
+    GraphComponent,
   ],
   imports: [
     BrowserModule,

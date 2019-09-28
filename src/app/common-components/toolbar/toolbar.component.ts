@@ -1,8 +1,8 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { IPerson } from '../../models/person';
-import { IUser } from '../../models/user';
+import { IPerson } from '../../models/person.model';
+import { IUser } from '../../models/user.model';
 import { APIService } from '../../services/api/api.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthenticationService } from '../../services/authentication/authentication.service';

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { GraphComponent } from './components/graph/graph.component';
 import { PersonConnectComponent } from './components/person-connect/person-connect.component';
 import { PersonCreateComponent } from './components/person-create/person-create.component';
 import { PersonSearchComponent } from './components/person-search/person-search.component';
@@ -16,7 +17,8 @@ const routes: Routes = [
   {path: 'person/connect', component: PersonConnectComponent, canActivate: [AuthGuard]},
   {path: 'person/:key', component: PersonComponent, canActivate: [AuthGuard]},
   {path: 'person', component: PersonSearchComponent, canActivate: [AuthGuard]},
-  {path: 'persons', component: PersonsComponent, canActivate: []},
+  {path: 'persons', component: PersonsComponent, canActivate: [AuthGuard]},
+  {path: 'graph/:key', component: GraphComponent, canActivate: [AuthGuard]},
   {path: 'user', component: UserComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
