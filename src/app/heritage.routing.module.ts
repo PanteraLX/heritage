@@ -13,7 +13,7 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
-  {path: 'person/new', component: PersonCreateComponent, canActivate: [AuthGuard]},
+  {path: 'create-person', component: PersonCreateComponent, canActivate: [AuthGuard]},
   {path: 'person/connect', component: PersonConnectComponent, canActivate: [AuthGuard]},
   {path: 'person/:key', component: PersonComponent, canActivate: [AuthGuard]},
   {path: 'person', component: PersonSearchComponent, canActivate: [AuthGuard]},
