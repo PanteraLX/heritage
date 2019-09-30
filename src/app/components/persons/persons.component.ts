@@ -19,7 +19,7 @@ export class PersonsComponent implements OnInit {
   public persons: IPerson[];
   public faUser = faUser;
   public faDownload = faDownload;
-  private dtOptions: DataTables.Settings = {};
+  public dtOptions: DataTables.Settings = {};
 
   constructor(private apiService: APIService, private downloadService: DownloadService) {
   }

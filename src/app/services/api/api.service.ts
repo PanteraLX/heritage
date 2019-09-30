@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +10,7 @@ export class APIService {
   private readonly endpoint: string;
 
   constructor(private http: HttpClient) {
-    this.endpoint = 'http://127.0.0.1:8080/';
+    this.endpoint = environment.api;
   }
 
   public fetch<T>(resource: string, options?: any): Observable<T> {
