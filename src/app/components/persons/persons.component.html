@@ -3,45 +3,65 @@
     <heritage-sidebar></heritage-sidebar>
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-        <h1 class="h2">Personen</h1>
+        <h1 class="h2">Personenverzeichnis</h1>
+        <div>
+          <button class="btn btn-outline-success mr-2" (click)="getCurrentPersonsCSV()">
+            <fa-icon [icon]="faDownload"></fa-icon>
+            Aktuelle Tabelle
+          </button>
+          <button class="btn btn-outline-success mr-2" (click)="getAllPersonsCSV()">
+            <fa-icon [icon]="faDownload"></fa-icon>
+            Gesamte Tabelle
+          </button>
+        </div>
       </div>
-      <form class="card">
-        <table class="table table-striped card-body bg-light">
-          <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Vorname</th>
-            <th scope="col">Name</th>
-            <th scope="col">Geburtsdatum</th>
-            <th scope="col"></th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr *ngFor="let person of persons$ | async">
-            <th scope="row">{{ person._key }}</th>
-            <td>{{ person.givenName }}</td>
-            <td>{{ person.surName }}</td>
-            <td>{{ person.birthDate | date :'dd.MM.yyyy' }}</td>
-            <td>
-              <a [routerLink]="['/person', person._key]">
-                <button class="btn btn-outline-dark">
-                  <fa-icon [icon]="faUser"></fa-icon>
-                </button>
-              </a>
-            </td>
-          </tr>
-          </tbody>
-        </table>
-        <ngb-pagination class="card-footer bg-light"
-          [collectionSize]="6165"
-          [(page)]="page"
-          (pageChange)="onPageChange()"
-          [maxSize]="5"
-          [rotate]="true"
-          [boundaryLinks]="true">
-        </ngb-pagination>
-      </form>
+      <table datatable [dtOptions]="dtOptions" class="row-border table table-striped bg-light">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Vorname</th>
+          <th>Name</th>
+          <th>Ehename</th>
+          <th>Übername</th>
+          <th>Geschlecht</th>
+          <th>Geburtsjahr</th>
+          <th>Geburtsort</th>
+          <th>Verstorben</th>
+          <th>Sterbejahr</th>
+          <th>Sterbeort</th>
+          <th>Zuletzt bearbeitet</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody *ngIf="persons?.length !== 0">
+        <tr *ngFor="let person of persons">
+          <td>{{ person._key }}</td>
+          <td>{{ person.givenName }}</td>
+          <td>{{ person.surName }}</td>
+          <td>{{ person.birthName }}</td>
+          <td hidden>{{ person.nickName }}</td>
+          <td hidden>{{ person.sex }}</td>
+          <td>{{ person.birthDate | date : 'yyyy' }}</td>
+          <td hidden>{{ person.birthPlace }}</td>
+          <td hidden>{{ person.dead }}</td>
+          <td>{{ person.deathDate  | date : 'yyyy' }}</td>
+          <td hidden>{{ person.deathPlace }}</td>
+          <td hidden>{{ person.lastUpdated  | date : 'dd.MM.yyyy hh:mm' }}</td>
+          <td>
+            <a [routerLink]="['/person', person._key]">
+              <button class="btn btn-outline-dark">
+                <fa-icon [icon]="faUser"></fa-icon>
+              </button>
+            </a>
+          </td>
+        </tr>
+        </tbody>
+        <tbody *ngIf="persons && persons.length === 0">
+        <tr>
+          <td colspan="3" class="no-data-available">No data!</td>
+        </tr>
+        <tbody>
+      </table>
     </main>
   </div>
 </div>
-

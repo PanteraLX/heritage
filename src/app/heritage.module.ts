@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { DataTablesModule } from 'angular-datatables';
 import { ComponentsModule } from './components/components.module';
 import { HeritageComponent } from './heritage.component';
 import { HeritageRoutingModule } from './heritage.routing.module';
@@ -24,6 +25,7 @@ import { JwtInterceptor } from './interceptors/jwt/jwt.interceptor';
     FormsModule,
     NgbModule,
     FontAwesomeModule,
+    DataTablesModule,
     HeritageRoutingModule,
     CommonComponentsModule,
     ComponentsModule
