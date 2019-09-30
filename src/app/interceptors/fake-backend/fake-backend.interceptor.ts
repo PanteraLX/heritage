@@ -101,7 +101,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
   }
 
   private isLoggedIn(headers: HttpHeaders) {
-    return headers.get('Authorization') === 'Bearer fake-jwt-token';
+    return headers.get('Authorization') === 'fake-jwt-token';
   }
 
   private idFromUrl(url: string) {
