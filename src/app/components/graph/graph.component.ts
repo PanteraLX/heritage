@@ -15,7 +15,7 @@ export class GraphComponent implements OnInit {
   private family: IFamily;
   private key: string;
   private graph: SVGElement;
-  private direction: 'descendants' | 'ancestors' = 'descendants';
+  public direction: 'descendants' | 'ancestors' = 'descendants';
 
   @ViewChild('graphElement', {static: true}) graphElement: ElementRef<HTMLDivElement>;
 
