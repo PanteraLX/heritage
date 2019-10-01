@@ -41,7 +41,7 @@ export class PersonsComponent implements OnInit {
   private getAjax() {
     return (ajaxDataRequest: DataTables.AjaxDataRequest, callback) =>
       this.apiService
-        .post<DataTables.AjaxData>('person', ajaxDataRequest)
+        .post<DataTables.AjaxData>('person/all', ajaxDataRequest)
         .subscribe((persons: DataTables.AjaxData) => {
           this.persons = persons.data;
           callback({
