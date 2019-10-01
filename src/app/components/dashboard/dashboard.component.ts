@@ -18,14 +18,14 @@ type INamesPerInitial = IGroup<IPersonsPerName>;
 })
 export class DashboardComponent implements OnInit {
   private persons: IPerson[];
-  private initialGroups: INamesPerInitial[];
-  private namesPerInitial: INamesPerInitial;
-  private personsPerName: IPersonsPerName;
+  public initialGroups: INamesPerInitial[];
+  public namesPerInitial: INamesPerInitial;
+  public personsPerName: IPersonsPerName;
 
   constructor(
     private apiService: APIService,
     public router: Router,
-    private route: ActivatedRoute,
+    public route: ActivatedRoute,
   ) {
   }
 
