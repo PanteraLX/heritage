@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { GraphComponent } from './components/graph/graph.component';
+import { PersonCleanupComponent } from './components/person-cleanup/person-cleanup.component';
 import { PersonConnectComponent } from './components/person-connect/person-connect.component';
 import { PersonCreateComponent } from './components/person-create/person-create.component';
 import { PersonSearchComponent } from './components/person-search/person-search.component';
@@ -13,6 +14,7 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
+  {path: 'cleanup-person', component: PersonCleanupComponent, canActivate: [AuthGuard]},
   {path: 'create-person', component: PersonCreateComponent, canActivate: [AuthGuard]},
   {path: 'person/connect', component: PersonConnectComponent, canActivate: [AuthGuard]},
   {path: 'person/:key', component: PersonComponent, canActivate: [AuthGuard]},

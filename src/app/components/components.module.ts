@@ -19,6 +19,7 @@ import { PersonsComponent } from './persons/persons.component';
 import { UserComponent } from './user/user.component';
 import { RegisterComponent } from './register/register.component';
 import { GraphComponent } from './graph/graph.component';
+import { PersonCleanupComponent } from './person-cleanup/person-cleanup.component';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { GraphComponent } from './graph/graph.component';
     UserComponent,
     RegisterComponent,
     GraphComponent,
+    PersonCleanupComponent,
   ],
   imports: [
     BrowserModule,
