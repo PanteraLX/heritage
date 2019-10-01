@@ -10,6 +10,7 @@ export class APIService {
   private readonly endpoint: string;
 
   constructor(private http: HttpClient) {
+    // @ts-ignore
     this.endpoint = environment.api;
   }
 

@@ -23,6 +23,7 @@ export function getCartesianGraph(descendants: IFamily) {
   const g = svg.append('g')
     .attr('font-family', 'sans-serif')
     .attr('font-size', 10)
+    // @ts-ignore
     .attr('transform', `translate(${root.dy / 3},${root.dx - x0})`);
 
   const link = g.append('g')
@@ -33,10 +34,8 @@ export function getCartesianGraph(descendants: IFamily) {
     .selectAll('path')
     .data(root.links())
     .join('path')
-
-    .attr('d', d3.linkHorizontal()
-      .x((d: any) => d.y)
-      .y((d: any) => d.x));
+    // @ts-ignore
+    .attr('d', d3.linkHorizontal().x((d: any) => d.y).y((d: any) => d.x));
 
   const node = g.append('g')
     .attr('stroke-linejoin', 'round')

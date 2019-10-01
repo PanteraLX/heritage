@@ -7,6 +7,7 @@ export function getRadialGraph(descendants: any) {
   const dx = 20;
   const dy = width / (root.height + 1);
   const tree = d3.tree().nodeSize([dx, dy]);
+  // @ts-ignore
   const diagonal = d3.linkHorizontal().x(d => d.y).y(d => d.x);
   const margin = ({top: 10, right: 120, bottom: 10, left: 10});
 
@@ -20,6 +21,7 @@ export function getRadialGraph(descendants: any) {
   });
 
   const svg = d3.create('svg')
+  // @ts-ignore
     .attr('viewBox', [-margin.left, -margin.top, width, dx])
     .style('font', '10px sans-serif')
     .style('user-select', 'none');
@@ -44,12 +46,12 @@ export function getRadialGraph(descendants: any) {
 
     let left = root;
     let right = root;
-    root.eachBefore((node: any) => {
-      if (node.x < left.x) {
-        left = node;
+    root.eachBefore((rootNode: any) => {
+      if (rootNode.x < left.x) {
+        left = rootNode;
       }
-      if (node.x > right.x) {
-        right = node;
+      if (rootNode.x > right.x) {
+        right = rootNode;
       }
     });
 
@@ -58,6 +60,7 @@ export function getRadialGraph(descendants: any) {
     const transition = svg.transition()
       .duration(duration)
       .attr('viewBox', [-margin.left, left.x - margin.top, width, height])
+      // @ts-ignore
       .tween('resize', window.ResizeObserver ? null : () => () => svg.dispatch('toggle'));
 
     // Update the nodes…
@@ -109,6 +112,7 @@ export function getRadialGraph(descendants: any) {
     const linkEnter = link.enter().append('path')
       .attr('d', d => {
         const o = {x: source.x0, y: source.y0};
+        // @ts-ignore
         return diagonal({source: o, target: o});
       });
 
@@ -120,6 +124,7 @@ export function getRadialGraph(descendants: any) {
     link.exit().transition(transition).remove()
       .attr('d', d => {
         const o = {x: source.x, y: source.y};
+        // @ts-ignore
         return diagonal({source: o, target: o});
       });
 
